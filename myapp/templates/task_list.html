@@ -1,0 +1,15 @@
+<!-- myapp/templates/task_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Lista de Tareas</h2>
+
+  {% load static %}
+
+  <ul>
+    {% for task in tasks %}
+      <li>{{ task.titulo }} - {{ task.estado }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'task_create' %}">Crear nueva tarea</a>
+{% endblock %}

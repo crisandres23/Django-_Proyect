@@ -1,0 +1,32 @@
+<!-- tarea_app/templates/task_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if not task.pk %}Nueva Tarea{% else %}Editar Tarea{% endif %}
+{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">
+    {% if not task.pk %}Nueva Tarea{% else %}Editar Tarea{% endif %}
+  </h2>
+  <form method="post" action="{% if not task.pk %}{% url 'task_create' %}{% else %}{% url 'task_edit' task.pk %}{% endif %}">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.titulo.label_tag }}
+      {{ form.titulo }}
+    </div>
+    <div class="form-group">
+      {{ form.descripcion.label_tag }}
+      {{ form.descripcion }}
+      {% if form.errors.descripcion %}
+        <span class="text-danger">{{ form.errors.descripcion.0 }}</span>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.estado.label_tag }}
+      {{ form.estado }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+  <a href="{% url 'task_list' %}" class="btn btn-secondary">Volver a la lista de tareas</a>
+{% endblock %}
