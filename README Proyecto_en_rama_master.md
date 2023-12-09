@@ -44,6 +44,7 @@ Configurar la base de datos (SQLite en este caso).
 Ejecución del Proyecto:
 
 Ejecutar el servidor de desarrollo de Django.
+
 Uso del Proyecto:
 
 Registrarse como usuario.
